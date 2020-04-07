@@ -1,0 +1,9 @@
+.aldryn/
+.gradle/
+.settings/
+.vscode/
+bin/
+build/
+
+.project
+.classpath
