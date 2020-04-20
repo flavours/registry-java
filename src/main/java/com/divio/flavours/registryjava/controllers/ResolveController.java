@@ -14,23 +14,23 @@ import java.util.Map;
 @Controller
 public class ResolveController {
     @PostMapping(path = "/addonversions/resolve/")
-    public ResponseEntity postResolve(@RequestParam("query") String query) {
+    public ResponseEntity postResolve(@RequestParam("query") final String query) {
         var result = MavenIdentifier.parse(query);
 
         return result.handle(
                 this::handleQueryFailure,
-                this::handleQuerySuccess
+                mavenIdentifier -> handleQuerySuccess(query, mavenIdentifier)
         );
     }
 
-    private ResponseEntity handleQueryFailure(Map<String, String> errors) {
+    private ResponseEntity handleQueryFailure(final Map<String, String> errors) {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    private ResponseEntity handleQuerySuccess(MavenIdentifier mavenResource) {
+    private ResponseEntity handleQuerySuccess(final String query, final MavenIdentifier mavenResource) {
         var identifier = mavenResource.toFlavourIdentifier();
         var base64String = Base64.getUrlEncoder().withoutPadding().encodeToString(identifier.getBytes());
 
-        return ResponseEntity.ok(new QuerySuccess(new AddonSpec(base64String, identifier)));
+        return ResponseEntity.ok(new QuerySuccess(query, new AddonSpec(base64String, identifier)));
     }
 }
