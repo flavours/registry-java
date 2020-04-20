@@ -1,4 +1,4 @@
-package com.example;
+package com.divio.flavours.registryjava;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

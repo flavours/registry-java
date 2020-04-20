@@ -8,17 +8,6 @@ version: '3.7'
 
 services:
 
-  # On the Cloud, your database runs on a dedicated cluster. Locally, we
-  # replicate it in a Docker container called "db".
-  db:
-    environment:
-      POSTGRES_DB: db
-      POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
-    image: postgres:9.6-alpine
-    volumes:
-      - db-data:/var/lib/postgresql/data
-      - ".:/app:rw"
   web:
     build: 
       context: .
@@ -27,8 +16,6 @@ services:
     # the project locally in Live configuration, you will need to change this.
     # See https://docs.divio.com/en/latest/how-to/local-in-live-mode.html.
     command: [ "./scripts/run_dev.sh" ]
-    depends_on:
-      - db
     # Add any environment variables your project needs to the .env-local file.
     # See https://docs.divio.com/en/latest/reference/configuration-environment-variables.html.
     env_file: .env_local
@@ -40,6 +27,3 @@ services:
     volumes:
       - ./:/app/
       - "./data:/data:rw"
-
-volumes:
-  db-data:

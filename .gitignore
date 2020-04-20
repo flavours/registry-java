@@ -1,5 +1,6 @@
 .aldryn/
 .gradle/
+.idea/
 .settings/
 .vscode/
 bin/
