@@ -1,9 +1,8 @@
-package com.divio.flavours.registryjava.models;
+package com.divio.flavours.registryjava.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class AddonSpec {
     @JsonProperty

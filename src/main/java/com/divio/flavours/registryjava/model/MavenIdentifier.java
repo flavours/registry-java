@@ -1,4 +1,4 @@
-package com.divio.flavours.registryjava.models;
+package com.divio.flavours.registryjava.model;
 
 import com.divio.flavours.registryjava.Result;
 
@@ -37,6 +37,18 @@ public class MavenIdentifier {
             var errors = Map.of("query", String.format("Input '%s' does not match pattern '%s'.", input, pattern.toString()));
             return Result.failure(errors);
         }
+    }
+
+    public String getArtifact() {
+        return artifact;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public String getVersion() {
+        return version;
     }
 
     public String toFlavourIdentifier() {

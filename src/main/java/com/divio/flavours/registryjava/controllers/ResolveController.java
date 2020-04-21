@@ -1,8 +1,8 @@
 package com.divio.flavours.registryjava.controllers;
 
-import com.divio.flavours.registryjava.models.AddonSpec;
-import com.divio.flavours.registryjava.models.MavenIdentifier;
-import com.divio.flavours.registryjava.models.QuerySuccess;
+import com.divio.flavours.registryjava.model.AddonSpec;
+import com.divio.flavours.registryjava.model.MavenIdentifier;
+import com.divio.flavours.registryjava.model.QuerySuccess;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,16 +18,16 @@ public class ResolveController {
         var result = MavenIdentifier.parse(query);
 
         return result.handle(
-                this::handleQueryFailure,
-                mavenIdentifier -> handleQuerySuccess(query, mavenIdentifier)
+                this::handleSuccess,
+                mavenIdentifier -> handleFailure(query, mavenIdentifier)
         );
     }
 
-    private ResponseEntity handleQueryFailure(final Map<String, String> errors) {
+    private ResponseEntity handleSuccess(final Map<String, String> errors) {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    private ResponseEntity handleQuerySuccess(final String query, final MavenIdentifier mavenResource) {
+    private ResponseEntity handleFailure(final String query, final MavenIdentifier mavenResource) {
         var identifier = mavenResource.toFlavourIdentifier();
         var base64String = Base64.getUrlEncoder().withoutPadding().encodeToString(identifier.getBytes());
 
