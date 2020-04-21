@@ -1,0 +1,7 @@
+---
+spec: "0.1"
+install:
+  package: "0.1"
+  meta:
+    version: "1.2.3"
+    name: "java/com.amazon/aws-s3:1.2.3"
