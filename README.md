@@ -40,6 +40,9 @@ can be used.)
 
 
 ## How to
+### Configure response URLs
+The app uses the environment variables `SCHEME`, `DOMAIN` and `PORT` to create URLs in responses. For local development
+the values specified in .env_local are used.  
 
 ### Run the local project on a different port
 

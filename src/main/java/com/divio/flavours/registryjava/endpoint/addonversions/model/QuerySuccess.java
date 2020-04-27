@@ -1,4 +1,4 @@
-package com.divio.flavours.registryjava.model;
+package com.divio.flavours.registryjava.endpoint.addonversions.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
