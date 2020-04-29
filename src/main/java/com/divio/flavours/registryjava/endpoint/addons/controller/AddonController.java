@@ -10,14 +10,14 @@ import javax.validation.constraints.NotBlank;
 import java.util.Optional;
 
 @RestController
-public class AddonsController {
+public class AddonController {
     private final AddonsService addonsService;
 
-    public AddonsController(AddonsService addonsService) {
+    public AddonController(AddonsService addonsService) {
         this.addonsService = addonsService;
     }
 
-    @GetMapping(path = "/addons/{base64id}/")
+    @GetMapping(path = "/addon/{base64id}/")
     Optional<Addon> addons(@NotBlank @PathVariable("base64id") final String base64Id) {
         return addonsService.resolveAddon(base64Id);
     }
