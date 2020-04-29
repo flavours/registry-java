@@ -14,9 +14,9 @@ public class ServerConfig {
 
     private final Integer port;
 
-    public ServerConfig(@Value("${host.scheme:{null}}") final String scheme,
-                        @Value("${host.domain}") final String domain,
-                        @Value("${host.port:{null}}") final Integer port) {
+    public ServerConfig(@Value("${server.config.scheme}") final String scheme,
+                        @Value("${server.config.domain}") final String domain,
+                        @Value("${server.config.port}") final Integer port) {
         this.scheme = scheme;
         this.domain = domain;
         this.port = port;
