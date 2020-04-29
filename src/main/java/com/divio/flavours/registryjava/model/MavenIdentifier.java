@@ -1,6 +1,6 @@
 package com.divio.flavours.registryjava.model;
 
-import com.divio.flavours.registryjava.Result;
+import com.divio.flavours.registryjava.util.Result;
 
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -24,7 +24,7 @@ public class MavenIdentifier {
      * @param input
      * @return
      */
-    public static Result<Map<String, String>, MavenIdentifier> parse(final String input) {
+    public static Result<String, MavenIdentifier> parse(final String input) {
         var matcher = pattern.matcher(input);
 
         if (matcher.matches()) {
@@ -34,7 +34,7 @@ public class MavenIdentifier {
 
             return Result.success(new MavenIdentifier(groupId, artifactId, version));
         } else {
-            var errors = Map.of("query", String.format("Input '%s' does not match pattern '%s'.", input, pattern.toString()));
+            var errors = String.format("Input '%s' does not match pattern '%s'.", input, pattern.toString());
             return Result.failure(errors);
         }
     }
@@ -53,6 +53,14 @@ public class MavenIdentifier {
 
     public String toFlavourIdentifier() {
         return String.format("java/%s/%s:%s", group, artifact, version);
+    }
+
+    public String toFlavourName() {
+        return String.format("java/%s/%s", group, artifact);
+    }
+
+    public String toGrailsIdentifier() {
+        return String.format("%s:%s:%s", group, artifact, version);
     }
 
     @Override
