@@ -43,11 +43,18 @@ You can run these quick tests to make sure the service works fine.
 
 ```
 curl -XPOST http://localhost:8000/addonversions/resolve/ -d 'query=java/com.amazon/aws-s3:1.2.3'
-curl https://localhost:8000/addonversions/amF2YS9jb20uYW1hem9uL2F3cy1zMzoxLjIuMw/
-curl https://localhost:8000/addons/amF2YS9jb20uYW1hem9uL2F3cy1zMzoxLjIuMw/
-curl https://localhost:8000/stacks/77bde934-5d73-4d25-9222-e74adb48ef3e/
-curl https://localhost:8000/namespaces/380ca58e-32dc-4a90-831d-b63a57a8f621/
+curl http://localhost:8000/addonversions/amF2YS9jb20uYW1hem9uL2F3cy1zMzoxLjIuMw/
+curl http://localhost:8000/addons/amF2YS9jb20uYW1hem9uL2F3cy1zMzoxLjIuMw/
+curl http://localhost:8000/stacks/77bde934-5d73-4d25-9222-e74adb48ef3e/
+curl http://localhost:8000/namespaces/380ca58e-32dc-4a90-831d-b63a57a8f621/
 ```
+
+Of use the flavour CLI:
+
+```
+flavour check --verbose java/com.amazon/aws-s3:1.2.3 --registry=http://localhost:8000/
+```
+
 
 ### Configure response URLs
 The app uses the environment variables `SCHEME`, `DOMAIN` and `PORT` to create URLs in responses. For local development
