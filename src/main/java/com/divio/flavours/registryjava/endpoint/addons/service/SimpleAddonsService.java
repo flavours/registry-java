@@ -29,7 +29,7 @@ public class SimpleAddonsService implements AddonsService {
                             var addonIdentifier = String.format("%s/%s", mavenIdentifier.getGroup(), mavenIdentifier.getArtifact());
                             var description = String.format("<h2>%s</h2>", mavenIdentifier.getArtifact());
                             var addonVersionsUrl = serverConfig.urlWithPath(String.format("/addonversions/%s/", id));
-                            var namespacesUrl = serverConfig.urlWithPath(String.format("/namespaces/%s/", NamespacesController.STATIC_NAMESPACE.getId()));
+                            var namespacesUrl = serverConfig.urlWithPath(String.format("/namespaces/%s/", NamespacesController.DEFAULT_NAMESPACE.getId()));
                             var addon = new Addon(id, namespacesUrl, addonIdentifier, description, List.of(addonVersionsUrl));
                             return Optional.of(addon);
                         });

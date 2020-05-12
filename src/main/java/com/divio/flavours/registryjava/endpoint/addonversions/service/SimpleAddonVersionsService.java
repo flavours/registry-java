@@ -52,7 +52,7 @@ public class SimpleAddonVersionsService implements AddonVersionsService {
                 new Meta(mavenIdentifier.toFlavourName(), mavenIdentifier.getVersion())
         );
 
-        var stackUrl = serverConfig.urlWithPath(String.format("/stacks/%s/", StacksController.JAVA_STACK.getId()));
+        var stackUrl = serverConfig.urlWithPath(String.format("/stacks/%s/", StacksController.DEFAULT_STACK.getId()));
 
         return new AddonVersion(
                 identifier,
