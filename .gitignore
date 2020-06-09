@@ -1,10 +1,11 @@
-.aldryn/
+.aldryn
 .gradle/
 .idea/
 .settings/
 .vscode/
 bin/
 build/
+data/
 
 .project
 .classpath
