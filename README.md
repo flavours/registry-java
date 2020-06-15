@@ -52,7 +52,7 @@ curl http://localhost:8000/namespaces/380ca58e-32dc-4a90-831d-b63a57a8f621/
 Of use the flavour CLI:
 
 ```
-flavour check --verbose java/com.amazon/aws-s3:1.2.3 --registry=http://localhost:8000/
+flavour check --verbose java/com.amazon/aws-s3:1.2.3 --registry=http://localhost:8000
 ```
 
 
